@@ -234,7 +234,7 @@ def c_pos(cigar, refstart):
 
 
             if c in ['S', 'H'] and readstart is None:
-                # 如果是软剪切，更新 readstartac
+                
                 if c == 'S':
                     readstart = readloc + number
                 readloc += number
@@ -1331,7 +1331,7 @@ def em_genotype(ref_depth, alt_depth, error_rate, max_iter=100):
         likelihood_11 = error_rate ** ref_depth * (1 - error_rate) ** alt_depth * p_11
         epsilon = 1e-50
         total_likelihood = likelihood_00 + likelihood_01 + likelihood_11
-        total_likelihood = max(total_likelihood, epsilon)  # 防止除零错误
+        total_likelihood = max(total_likelihood, epsilon)  
         w_00 = likelihood_00 / total_likelihood
         w_01 = likelihood_01 / total_likelihood
         w_11 = likelihood_11 / total_likelihood
