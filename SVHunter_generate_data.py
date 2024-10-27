@@ -152,7 +152,7 @@ def feature_read_segement(svlist):
     for index in range(len(sorted_alignment_list) - 1):
         sg_list.append(feature_record(sorted_alignment_list[index], sorted_alignment_list[index + 1]))
     if len(svlist) >= 3 and sorted_alignment_list[0][-2] != sorted_alignment_list[1][-2]:
-        sg_list.append(feature_record(sorted_alignment_list[0], sorted_alignment_list[-1], ins_tra_flag=True))
+        sg_list.append(feature_record(sorted_alignment_list[0], sorted_alignment_list[-1]))
     return sg_list
 #%%
 def analyze_read_segments(read, segement_data, candidate):
