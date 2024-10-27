@@ -903,9 +903,9 @@ def mergedeleton_long(pre, bamfile, ssstart, chr_name, index):
 
             num_of_mismatch = nm - sum(indel)
             total_segment_length = sum(
-                [b for a, b in read.cigartuples if a not in CIGAR_CLIP + [CIGAR_DEL]])  # 比对上的长度，不带clip，和del!不带ins可修改
+                [b for a, b in read.cigartuples if a not in CIGAR_CLIP + [CIGAR_DEL]])  
 
-            mm_rate = num_of_mismatch * K_MM / total_segment_length  0
+            mm_rate = num_of_mismatch * K_MM / total_segment_length  
             error_rate = nm * K_MM / total_segment_length
 
             alignscore = alignment_quality_score(read.mapq, error_rate, num_of_mismatch, mm_rate)
