@@ -59,8 +59,6 @@ if (mode == 'generate'):
         print('\n\n')
 
 elif (mode == 'call'):
-    # cluster_by_predict(bamfilepath,data_path,testpath,outputpath,contigg = contigg,threads = 15)
-    # model_predict(weights_num, bamfilepath, data_path, predict_path, contigg=[])
     if (len(sys.argv) not in [7, 8, 9]):
         debug = 1
     else:
@@ -89,11 +87,10 @@ elif (mode == 'call'):
             print('Following chromosomes will be used')
             print(contigg)
 
-        #model_predict(predict_weight,bamfilepath, datapath,predict_path, contigg)
+        model_predict(predict_weight,bamfilepath, datapath,predict_path, contigg)
         print('\n\n')
         print('Completed, Predict result saved in current folder.')
         cluster_by_predict(bamfilepath, datapath, predict_path, outputvcfpath, contigg, thread)
-        # predict_fn(datapath = datapath, weightpath = weightpath, bamfilepath = bamfilepath, includecontig=includecontig )
         print('\n\n')
         print('Completed, Result saved in outputvcfpath folder.')
         print('\n\n')
