@@ -248,7 +248,7 @@ def c_pos(cigar, refstart):
                 if c in ['M', 'D', 'N', '=', 'X']:
                     refloc += number
 
-                # 对于结尾的软剪切，记录 readend 和 refend
+                
                 if c in ['H', 'S'] and readstart is not None:
                     readend = readloc
                     refend = refloc
