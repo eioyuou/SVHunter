@@ -1781,7 +1781,7 @@ def cluster_by_predict(bamfilepath, data_path, testpath, outputpath, contigg,thr
         contig2length[bamfile.get_index_statistics()[count].contig] = bamfile.lengths[count]
     coverage_task = [(bamfilepath, chr__name, contig2length[chr__name]) for chr__name in contig]
     global_coverage_all = thread_pool.starmap(average_read_coverage, coverage_task)
-    alllength = [(contig2length[chr__name]) for chr__name in contigg]
+    alllength = [(contig2length[chr__name]) for chr__name in contig]
     global_coverage = math.ceil(sum(global_coverage_all) / sum(alllength))
     # tasks = [(x_train_name1,x_train_index,start,end,chr_name,bamfilepath) for x_train_name1,x_train_index,start,end,chr_name in x_train_data_all]
 
