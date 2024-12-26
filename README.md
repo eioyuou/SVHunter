@@ -1,6 +1,7 @@
 # SVHunter
 SVHunter is a long-read-based structural variation detection through transformer model.
 SVHunter can detect and genotype DEL/INS/DUP/INV/TRA.
+The shared pre-trained model is compatible with CCS, CLR, and ONT sequencing data, allowing for structural variation detection across these platforms without the need for additional training or fine-tuning.
 
 ## Installation
 ### Requirements
