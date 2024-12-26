@@ -40,6 +40,8 @@ eg: python SVHunter.py generate ./long_read.bam ./outpath 16 [12,13,14,15,16,17,
 
 ``` 
 ### 2.Call SV 
+
+SVHunter achieves optimal performance with GPU acceleration. While it can be run on a CPU, the computational efficiency will be significantly lower. Users are encouraged to use a GPU for the best experience.
 ```　 
 python SVHunter.py call predict_weight,datapath,bamfilepath,predict_path,outvcfpath, thread,includecontig(default:[](all chromosomes)   
    
