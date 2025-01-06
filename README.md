@@ -43,17 +43,27 @@ eg: python SVHunter.py generate ./long_read.bam ./outpath 16 [12,13,14,15,16,17,
 
 SVHunter achieves optimal performance with GPU acceleration. While it can be run on a CPU, the computational efficiency will be significantly lower. Users are encouraged to use a GPU for the best experience.
 ```　 
-python SVHunter.py call predict_weight,datapath,bamfilepath,predict_path,outvcfpath, thread,includecontig(default:[](all chromosomes)   
-   
-predict_weight is the path of the model weights;  
-datapath is a folder which is used to store evaluation data;  
-bamfilepath is the path of the alignment file about the reference and the long read set;
-predict_path is the path of the model predict data; 
-outvcfpath is the path of output vcf file;
-thread specifies the number of threads to use;
-includecontig is the list of contigs to perform detection on (default: [], meaning all contigs are used)  
-   
-eg: python SVHunter.py call ./predict_weight.h5 ./datapath ./long_read.bam ./predict_path ./outvcfpath 10 [12,13,14,15,16,17,18,19,20,21,22]  
+python SVHunter.py call predict_weight,datapath,bamfilepath,predict_path,outvcfpath,thread,includecontig,num_gpus
+
+Parameters:
+- predict_weight: path to the model weights file
+- datapath: folder used to store evaluation data 
+- bamfilepath: path to the alignment file between reference and long read set
+- predict_path: path for model prediction data
+- outvcfpath: path for output vcf file
+- thread: number of threads to use
+- includecontig: list of contigs to perform detection on (default: [], meaning all contigs will be used)
+- num_gpus: number of GPUs to use (optional parameter, default: auto-detect and use all available GPUs)
+
+Usage examples:
+# Use default GPU configuration
+python SVHunter.py call ./predict_weight.h5 ./datapath ./long_read.bam ./predict_path ./outvcfpath 10 [12,13,14,15,16,17,18,19,20,21,22]
+
+# Specify using 2 GPUs
+python SVHunter.py call ./predict_weight.h5 ./datapath ./long_read.bam ./predict_path ./outvcfpath 10 [12,13,14,15,16,17,18,19,20,21,22] 2
+
+# Use all contigs and specify 1 GPU
+python SVHunter.py call ./predict_weight.h5 ./datapath ./long_read.bam ./predict_path ./outvcfpath 10 [] 1  
 ```  
 
 
