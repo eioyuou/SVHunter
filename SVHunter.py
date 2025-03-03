@@ -9,18 +9,18 @@ import ast
 import tensorflow as tf
 import time
 mode = sys.argv[1]
+print('len',len( sys.argv))
 debug = 0
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
 #print('-----------------')
-#print(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8])
+#print(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8],sys.argv[9])
 #print('-----------------')
 def parse_contigg(contigg_str):
+    if contigg_str.strip() == '[]':
+        return []
 
     contigg_str = contigg_str.strip('[]')
-
-
     contigg_list = contigg_str.split(',')
-
     contigg_list = [item.strip().strip("'").strip('"') for item in contigg_list]
 
     return contigg_list
@@ -59,12 +59,23 @@ if (mode == 'generate'):
         print('\n\n')
 
 elif (mode == 'call'):
-    if (len(sys.argv) not in [7, 8, 9]):
+    if (len(sys.argv) not in [7, 8, 9, 10]):
         debug = 1
     else:
         timenow = time.time()
         print('testing')
-        if (len(sys.argv) == 9):
+        if (len(sys.argv) == 10):
+                contigg_str = sys.argv[8]
+                print('contigg_str:',len(contigg_str))
+                if len (contigg_str) == 0:
+                    contigg = []
+                else:
+                    contigg = parse_contigg(contigg_str)
+                
+                predict_weight, datapath, bamfilepath, predict_path, outputvcfpath, thread, num_nv= sys.argv[2], sys.argv[3], \
+                sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[9]
+
+        elif (len(sys.argv) == 9):
             contigg_str = sys.argv[8]
             contigg = parse_contigg(contigg_str)
             predict_weight, datapath, bamfilepath, predict_path, outputvcfpath, contigg, thread = sys.argv[2], sys.argv[3], \

@@ -27,7 +27,7 @@ from sklearn.neighbors import NearestNeighbors
 from scipy.stats import binom
 # %%
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
 #config = tf.compat.v1.ConfigProto()
 #config.gpu_options.per_process_gpu_memory_fraction = 0.2
 #tf.compat.v1.Session(config=config)
@@ -1585,7 +1585,8 @@ def model_predict(weights_num, bamfilepath, data_path1, testpath, contigg):
     datapath1 = data_path1
     bamfile = pysam.AlignmentFile(bamfilepath, 'rb', threads=20)
 
-
+    print('contigg:',contigg)
+    print('len:',len(contigg))
     if len(contigg) == 0:
         contig = []
         for count in range(len(bamfile.get_index_statistics())):
@@ -1597,7 +1598,7 @@ def model_predict(weights_num, bamfilepath, data_path1, testpath, contigg):
         contig2length[bamfile.get_index_statistics()[count].contig] = bamfile.lengths[count]
     data = []
     resultlist = [['CONTIG', 'START', 'SVLEN', 'READ_SUPPORT', 'SVTYPE']]
-
+    print('contig:',contig)
     for ww in contig:
         chr_name = ww
         chr_length = contig2length[ww]
